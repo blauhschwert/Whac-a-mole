@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://sbll7eibdxdh"]
+
+[ext_resource type="Texture2D" uid="uid://u616ubshcdqv" path="res://assets/cloud.png" id="1_avlja"]
+
+[node name="sky" type="Node2D"]
+
+[node name="Cloud_00" type="Sprite2D" parent="."]
+position = Vector2(32, 24)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_avlja")
+
+[node name="Cloud_01" type="Sprite2D" parent="."]
+position = Vector2(160, 40)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_avlja")
+
+[node name="Cloud_02" type="Sprite2D" parent="."]
+position = Vector2(96, 48)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_avlja")
+
+[node name="Cloud_03" type="Sprite2D" parent="."]
+position = Vector2(216, 16)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_avlja")
+
+[node name="Cloud_04" type="Sprite2D" parent="."]
+position = Vector2(288, 24)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_avlja")

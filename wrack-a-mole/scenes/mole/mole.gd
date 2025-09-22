@@ -14,7 +14,9 @@ var state  : State = State.RESET
 
 func _ready():
 	anim_player.animation_finished.connect(_on_animation_finished)
-	$MoleTimer.paused = true
+	@warning_ignore("narrowing_conversion")
+	$MoleTimer.wait_time = randi_range(2.0,4.5)
+	#$MoleTimer.paused = true
 
 
 func _on_animation_finished(_anim_name : String) -> void:

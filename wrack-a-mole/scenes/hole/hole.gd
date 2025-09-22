@@ -21,10 +21,15 @@ func _input_event(_viewport, event, _shape_idx):
 		modulate = Color(1,0,0) # Change color to indicate touch
 		hide_mole()
 		finishMole.emit()
+	elif event is InputEventMouseButton and event.is_pressed():
+		modulate = Color(1,0,0) # Change color to indicate touch
+		hide_mole()
+		finishMole.emit()
 
 func create_mole() -> void:
 	_mole = MOLE.instantiate()
 	add_child(_mole)
+	moleCreated.emit()
 
 func show_mole() -> void:
 	if _mole != null:

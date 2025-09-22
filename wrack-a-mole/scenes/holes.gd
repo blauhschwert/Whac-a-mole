@@ -1,6 +1,8 @@
 class_name Holes
 extends Node
 
+signal mole_wracked(points : int)
+
 # All the holes that got a mole
 @onready var hole_00 = $Hole_00
 @onready var hole_01 = $Hole_01
@@ -18,6 +20,7 @@ var holes = []
 var hole_patterns = [] # Mole Pattern for game
 var active_moles : int = 0
 
+var mole_points = [10,15,35]
 
 func _ready() -> void:
 	randomize()
@@ -26,6 +29,11 @@ func _ready() -> void:
 	
 	for i in get_children():
 		holes.append(i)
+	
+	hole_00.moleCreated.connect(_add_moles)
+	hole_01.moleCreated.connect(_add_moles)
+	hole_02.moleCreated.connect(_add_moles)
+	hole_03.moleCreated.connect(_add_moles)
 	
 	hole_00.finishMole.connect(_finished_mole)
 	hole_01.finishMole.connect(_finished_mole)
@@ -78,9 +86,14 @@ func _finished_mole() -> void:
 		holes[i]._reset_hole_status()
 	
 	active_moles -= 1
+	var score : int = mole_points[randi() % mole_points.size()]
+	emit_signal("mole_wracked",score)
 
 func _create_moles() -> void:
 	for j in range(4):
 		if hole_patterns[j] == 1:
 			holes[j].create_mole()
 			active_moles += 1
+
+func _add_moles() -> void:
+	active_moles += 1

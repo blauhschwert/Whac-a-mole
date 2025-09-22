@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnafu5m4xlq0b"]
+
+[ext_resource type="Texture2D" uid="uid://dc3bik6cul3ap" path="res://assets/bush.png" id="2_6t3mt"]
+[ext_resource type="Texture2D" uid="uid://cc2okj115aqpi" path="res://assets/tree.png" id="3_va3f3"]
+
+[node name="Forrest" type="Node2D"]
+
+[node name="Bush" type="Sprite2D" parent="."]
+position = Vector2(40, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6t3mt")
+
+[node name="Bush2" type="Sprite2D" parent="."]
+position = Vector2(24, 128)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6t3mt")
+
+[node name="Bush5" type="Sprite2D" parent="."]
+position = Vector2(280, 120)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6t3mt")
+
+[node name="Bush3" type="Sprite2D" parent="."]
+position = Vector2(280, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6t3mt")
+
+[node name="Bush4" type="Sprite2D" parent="."]
+position = Vector2(280, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6t3mt")
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(16, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("3_va3f3")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(48, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("3_va3f3")
+
+[node name="Tree3" type="Sprite2D" parent="."]
+position = Vector2(48, 104)
+scale = Vector2(2, 2)
+texture = ExtResource("3_va3f3")
+
+[node name="Tree4" type="Sprite2D" parent="."]
+position = Vector2(264, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("3_va3f3")
+
+[node name="Tree6" type="Sprite2D" parent="."]
+position = Vector2(296, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("3_va3f3")
+
+[node name="Tree5" type="Sprite2D" parent="."]
+position = Vector2(312, 136)
+scale = Vector2(2, 2)
+texture = ExtResource("3_va3f3")
