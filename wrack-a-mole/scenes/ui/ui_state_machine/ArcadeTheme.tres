@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dt0vgpehp08jd"]
+
+[ext_resource type="FontFile" uid="uid://croe4353rn53e" path="res://assets/font/ARCADECLASSIC.TTF" id="1_db7sh"]
+[ext_resource type="FontFile" uid="uid://b6yty0ijggcl6" path="res://assets/font/m5x7.ttf" id="2_kqws8"]
+
+[resource]
+default_font = ExtResource("2_kqws8")
+default_font_size = 8
+Label/colors/font_color = Color(0.35686275, 0.39607844, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("1_db7sh")

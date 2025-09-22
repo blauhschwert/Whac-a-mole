@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://vhu41x43q2rq"]
+
+[ext_resource type="Script" uid="uid://ywsg13pjvm15" path="res://scenes/hole/hole.gd" id="1_vevmo"]
+[ext_resource type="Texture2D" uid="uid://qvm60pxnh0hm" path="res://assets/hole.png" id="1_vjmb2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n61ei"]
+radius = 7.0
+height = 14.0
+
+[node name="Hole" type="Area2D"]
+script = ExtResource("1_vevmo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vjmb2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_n61ei")
