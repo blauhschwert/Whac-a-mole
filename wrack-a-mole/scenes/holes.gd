@@ -4,10 +4,10 @@ extends Node
 signal mole_wracked(points : int)
 
 # All the holes that got a mole
-@onready var hole_00 = $Hole_00
-@onready var hole_01 = $Hole_01
-@onready var hole_02 = $Hole_02
-@onready var hole_03 = $Hole_03
+@onready var hole_00 : Hole = $Hole_00
+@onready var hole_01 : Hole = $Hole_01
+@onready var hole_02 : Hole = $Hole_02
+@onready var hole_03 : Hole = $Hole_03
 
 var holes_dict = {
 	"hole_00" : [],
@@ -18,7 +18,7 @@ var holes_dict = {
 
 var holes = []
 var hole_patterns = [] # Mole Pattern for game
-var active_moles : int = 0
+var moles_in_game : int = 0
 
 var mole_points = [10,15,35]
 
@@ -30,15 +30,16 @@ func _ready() -> void:
 	for i in get_children():
 		holes.append(i)
 	
+	hole_00.moleClear.connect(_finished_mole)
+	hole_01.moleClear.connect(_finished_mole)
+	hole_02.moleClear.connect(_finished_mole)
+	hole_03.moleClear.connect(_finished_mole)
+	
+	
 	hole_00.moleCreated.connect(_add_moles)
 	hole_01.moleCreated.connect(_add_moles)
 	hole_02.moleCreated.connect(_add_moles)
 	hole_03.moleCreated.connect(_add_moles)
-	
-	hole_00.finishMole.connect(_finished_mole)
-	hole_01.finishMole.connect(_finished_mole)
-	hole_02.finishMole.connect(_finished_mole)
-	hole_03.finishMole.connect(_finished_mole)
 	
 	print(hole_patterns)
 	hole_patterns = _create_pattern()
@@ -53,7 +54,7 @@ func _create_pattern() -> Array:
 
 func _process(_delta):
 	
-	if active_moles <= 0:
+	if moles_in_game <= 0:
 		hole_patterns = _create_pattern()
 		_create_moles()
 		pop_moles()
@@ -63,10 +64,8 @@ func _process(_delta):
 func pop_moles() -> void:
 	for i in holes.size():
 		if hole_patterns[i] == 1:
-			holes[i].show_mole()
-			active_moles += 1
-		else:
-			holes[i].hide_mole()
+			holes[i].create_mole()
+			moles_in_game += 1
 
 # not correct way to create a algorithm for creating a dict with 
 # mole patterns
@@ -85,7 +84,7 @@ func _finished_mole() -> void:
 	for i in range(4):
 		holes[i]._reset_hole_status()
 	
-	active_moles -= 1
+	moles_in_game -= 1
 	var score : int = mole_points[randi() % mole_points.size()]
 	emit_signal("mole_wracked",score)
 
@@ -93,7 +92,7 @@ func _create_moles() -> void:
 	for j in range(4):
 		if hole_patterns[j] == 1:
 			holes[j].create_mole()
-			active_moles += 1
+			moles_in_game += 1
 
 func _add_moles() -> void:
-	active_moles += 1
+	moles_in_game += 1

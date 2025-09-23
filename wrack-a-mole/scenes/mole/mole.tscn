@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bugnfvmqmygod"]
+[gd_scene load_steps=10 format=3 uid="uid://bugnfvmqmygod"]
 
 [ext_resource type="Texture2D" uid="uid://d1drwdh3hl32j" path="res://assets/Mole/Mole.png" id="1_jkyfm"]
 [ext_resource type="Script" uid="uid://45enj76gh4o6" path="res://scenes/mole/mole.gd" id="1_mht7g"]
 [ext_resource type="Texture2D" uid="uid://ditc0ggwjjo0s" path="res://assets/Mole/MoleHand.png" id="2_mht7g"]
+[ext_resource type="AudioStream" uid="uid://cw6eqdqpohb0x" path="res://assets/sounds/hit_duck.wav" id="4_icasp"]
 
 [sub_resource type="Animation" id="Animation_pmep1"]
 length = 0.001
@@ -274,7 +275,11 @@ _data = {
 &"pop_up": SubResource("Animation_mht7g")
 }
 
-[node name="Mole" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mht7g"]
+radius = 8.0
+height = 21.333332
+
+[node name="Mole" type="Area2D"]
 position = Vector2(0, 10)
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_mht7g")
@@ -301,10 +306,17 @@ flip_h = true
 libraries = {
 &"": SubResource("AnimationLibrary_gvehh")
 }
+autoplay = "pop_up"
 
 [node name="MoleTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mht7g")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_icasp")
 
 [connection signal="timeout" from="MoleTimer" to="." method="_on_timer_timeout"]

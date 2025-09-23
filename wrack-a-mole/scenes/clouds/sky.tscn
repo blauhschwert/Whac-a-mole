@@ -10,17 +10,17 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_avlja")
 
 [node name="Cloud_01" type="Sprite2D" parent="."]
-position = Vector2(160, 40)
+position = Vector2(152, 24)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_avlja")
 
 [node name="Cloud_02" type="Sprite2D" parent="."]
-position = Vector2(96, 48)
+position = Vector2(88, 40)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_avlja")
 
 [node name="Cloud_03" type="Sprite2D" parent="."]
-position = Vector2(216, 16)
+position = Vector2(224, 32)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_avlja")
 
