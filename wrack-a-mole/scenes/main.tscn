@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn405efqarqjn"]
+[gd_scene load_steps=9 format=3 uid="uid://cn405efqarqjn"]
 
 [ext_resource type="Texture2D" uid="uid://cq1cswe8gcjdt" path="res://assets/BackgroundNew.png" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://dub575s4aubk2" path="res://scenes/main.gd" id="1_tipki"]
 [ext_resource type="PackedScene" uid="uid://vhu41x43q2rq" path="res://scenes/hole/hole.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://sbll7eibdxdh" path="res://scenes/clouds/sky.tscn" id="2_jyhfs"]
 [ext_resource type="Script" uid="uid://dadvdmpm7l0sa" path="res://scenes/holes.gd" id="2_sugp2"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b6cilih4d3skr" path="res://scenes/ui/game_ui/game_ui.tscn" id="7_o6xl0"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_tipki")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_o5qli")
@@ -21,6 +23,7 @@ centered = false
 [node name="Forrest" parent="Objects" instance=ExtResource("3_tbgi4")]
 
 [node name="Player" parent="." instance=ExtResource("4_tefeu")]
+unique_name_in_owner = true
 position = Vector2(176.00002, 144.00002)
 scale = Vector2(2.5, 2.5)
 
@@ -48,5 +51,3 @@ layer = 0
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("7_o6xl0")]
 mouse_filter = 2
-
-[connection signal="mole_wracked" from="Holes" to="CanvasLayer/GameUI" method="_on_holes_mole_wracked"]
