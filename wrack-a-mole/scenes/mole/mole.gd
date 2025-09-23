@@ -16,7 +16,8 @@ var state  : State = State.RESET
 
 func _ready():
 	randomize()
-	$MoleTimer.paused = true
+	$MoleTimer.wait_time = randf_range(2.5,5.1)
+	$MoleTimer.paused = false
 	$AttackNode.visible = false
 	anim_player.animation_finished.connect(_on_animation_finished)
 
@@ -59,14 +60,13 @@ func set_state(new_state : State) -> void:
 func _on_animation_finished(_anim_name : String) -> void:
 	match _anim_name:
 		"pop_up":
+			$MoleTimer.start()
 			set_state(State.IDLE)
 		"hit":
-			finishMole.emit()
 			set_state(State.HIDE)
 		"dissapear":
-			$MoleTimer.wait_time = randf_range(2.0,3.1)
-			$MoleTimer.start()
 			queue_free()
+			finishMole.emit()
 			Globals.add_score(Globals.rand_score())
 		
 

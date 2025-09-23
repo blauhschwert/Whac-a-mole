@@ -27,14 +27,19 @@ func _ready() -> void:
 		if n.has_signal("moleCreated"):
 			n.moleCreated.connect(_add_moles)
 	
-	for h in moles:
-		if h.has_signal("finishMole"):
-			h.finishMole.connect(_finished_mole)
-		
-	print(hole_patterns)
 	hole_patterns = _create_pattern()
 	print(hole_patterns)
+	print(hole_patterns)
 	pop_moles()
+	
+	for m in holes:
+		if m.mole != null:
+			moles.append(m.mole)
+	
+	for h in moles:
+		if h.has_signal("finishMole"):
+			h.connect("finishMole",Callable(self,"_finished_mole"),CONNECT_ONE_SHOT)
+		
 
 func _create_pattern() -> Array:
 	hole_patterns.clear()
