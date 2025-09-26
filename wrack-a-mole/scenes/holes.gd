@@ -35,11 +35,6 @@ func _ready() -> void:
 	for m in holes:
 		if m.mole != null:
 			moles.append(m.mole)
-	
-	for h in moles:
-		if h.has_signal("finishMole"):
-			h.connect("finishMole",Callable(self,"_finished_mole"),CONNECT_ONE_SHOT)
-		
 
 func _create_pattern() -> Array:
 	hole_patterns.clear()
@@ -70,6 +65,8 @@ func _create_moles() -> void:
 		if hole_patterns[j] == 1:
 			holes[j].create_mole()
 			_add_moles()
+			holes[j].mole.finishMole.connect(_finished_mole)
+		
 
 func _add_moles() -> void:
 	moles_in_game += 1

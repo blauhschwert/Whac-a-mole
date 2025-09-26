@@ -63,11 +63,11 @@ func _on_animation_finished(_anim_name : String) -> void:
 			$MoleTimer.start()
 			set_state(State.IDLE)
 		"hit":
+			Globals.add_score(Globals.rand_score())
 			set_state(State.HIDE)
 		"dissapear":
 			queue_free()
 			finishMole.emit()
-			Globals.add_score(Globals.rand_score())
 		
 
 func mole_autostart() -> void:
